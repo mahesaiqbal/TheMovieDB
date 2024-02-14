@@ -19,3 +19,10 @@ dependencyResolutionManagement {
 }
 
 include(":composeApp")
+include(":apis:movie")
+include(":features:home")
+include(":features:favorite")
+include(":features:moviedetail")
+include(":features:movielist")
+include(":libraries:component")
+include(":libraries:core")
