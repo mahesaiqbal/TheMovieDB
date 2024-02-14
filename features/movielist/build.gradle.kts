@@ -1,6 +1,9 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.jetbrainsCompose)
 }
 
 kotlin {
@@ -25,8 +28,27 @@ kotlin {
 
     sourceSets {
         commonMain.dependencies {
-            //put your multiplatform dependencies here
+            implementation(compose.runtime)
+            implementation(compose.foundation)
+            implementation(compose.material)
+            implementation(compose.ui)
+            @OptIn(ExperimentalComposeLibrary::class)
+            implementation(compose.components.resources)
+            implementation(libs.paging.cashapp.common)
+            implementation(libs.paging.cashapp.compose)
+            implementation(projects.libraries.core)
+            implementation(projects.libraries.component)
+            implementation(projects.apis.movie)
         }
+
+        androidMain.dependencies {
+            implementation(libs.compose.ui.tooling.preview)
+            implementation(libs.androidx.activity.compose)
+
+            implementation(libs.paging.androidx.runtime)
+            implementation(libs.paging.androidx.compose)
+        }
+
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }

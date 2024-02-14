@@ -1,10 +1,12 @@
+import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.compose.ExperimentalComposeLibrary
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsCompose)
+    alias(libs.plugins.buildKonfig)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 kotlin {
@@ -28,7 +30,6 @@ kotlin {
     }
     
     sourceSets {
-        
         androidMain.dependencies {
             implementation(libs.compose.ui.tooling.preview)
             implementation(libs.androidx.activity.compose)
@@ -40,6 +41,17 @@ kotlin {
             implementation(compose.ui)
             @OptIn(ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+            implementation(projects.libraries.core)
+            implementation(projects.libraries.component)
+            implementation(projects.apis.movie)
+            implementation(projects.features.home)
+            implementation(projects.features.moviedetail)
+            implementation(projects.features.movielist)
+            implementation(projects.features.favorite)
+            implementation(libs.preCompose)
+        }
+        iosMain.dependencies {
+
         }
     }
 }
@@ -78,3 +90,12 @@ android {
     }
 }
 
+buildkonfig {
+    packageName = "com.mahesaiqbal.app"
+
+    defaultConfigs {
+        buildConfigField(STRING, "BASE_URL", "https://api.themoviedb.org/3/")
+        buildConfigField(STRING, "APP_NAME", "TheMovieDB")
+        buildConfigField(STRING, "API_KEY", "49a79f125a171a70aafeaefdc6f406b8")
+    }
+}
