@@ -81,7 +81,7 @@ fun MovieDetailScreen(
                         viewModel.sendIntent(MovieDetailIntent.ToggleFavorite(data))
                     }
                 },
-                contentColor = if (state.isFavorite) Color.Red else Color.White
+                contentColor = Color.White
             ) {
                 Icon(
                     painter = imageFavoriteResource,

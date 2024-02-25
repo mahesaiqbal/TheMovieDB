@@ -46,7 +46,6 @@ kotlin {
             implementation(projects.apis.movie)
             implementation(projects.features.home)
             implementation(projects.features.moviedetail)
-            implementation(projects.features.movielist)
             implementation(projects.features.favorite)
             implementation(libs.preCompose)
         }
