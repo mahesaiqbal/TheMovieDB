@@ -75,18 +75,20 @@ fun MovieDetailScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(
-                onClick = {
-                    movieData?.let { data ->
-                        viewModel.sendIntent(MovieDetailIntent.ToggleFavorite(data))
-                    }
-                },
-                contentColor = Color.White
-            ) {
-                Icon(
-                    painter = imageFavoriteResource,
-                    contentDescription = null
-                )
+            if (movieData != null) {
+                FloatingActionButton(
+                    onClick = {
+                        movieData?.let { data ->
+                            viewModel.sendIntent(MovieDetailIntent.ToggleFavorite(data))
+                        }
+                    },
+                    contentColor = Color.White
+                ) {
+                    Icon(
+                        painter = imageFavoriteResource,
+                        contentDescription = null
+                    )
+                }
             }
         }
     ) {
