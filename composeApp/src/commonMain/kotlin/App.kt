@@ -5,7 +5,7 @@ import androidx.compose.runtime.remember
 import com.mahesaiqbal.apis.movie.LocalMovieRepository
 import com.mahesaiqbal.apis.movie.MovieRepository
 import com.mahesaiqbal.features.moviedetail.screen.MovieDetailScreen
-import com.mahesaiqbal.libraries.component.LocalImageResource
+import com.mahesaiqbal.libraries.component.utils.LocalImageResource
 import com.mahesaiqbal.libraries.core.LocalAppConfig
 import com.mahesaiqbal.libraries.core.viewmodel.LocalViewModelHost
 import com.mahesaiqbal.libraries.core.viewmodel.ViewModelHost
@@ -13,7 +13,6 @@ import moe.tlaster.precompose.PreComposeApp
 import moe.tlaster.precompose.navigation.NavHost
 import moe.tlaster.precompose.navigation.rememberNavigator
 import moe.tlaster.precompose.navigation.transition.NavTransition
-import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 @Composable
 fun App() {

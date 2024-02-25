@@ -45,7 +45,7 @@ import com.mahesaiqbal.apis.movie.LocalMovieRepository
 import com.mahesaiqbal.apis.movie.model.movie.Movie
 import com.mahesaiqbal.features.moviedetail.state.MovieDetailIntent
 import com.mahesaiqbal.features.moviedetail.viewmodel.MovieDetailViewModel
-import com.mahesaiqbal.libraries.component.LocalImageResource
+import com.mahesaiqbal.libraries.component.utils.LocalImageResource
 import com.mahesaiqbal.libraries.component.screen.general.FailureScreen
 import com.mahesaiqbal.libraries.component.screen.general.LoadingScreen
 import com.mahesaiqbal.libraries.component.utils.DateFormatHelper

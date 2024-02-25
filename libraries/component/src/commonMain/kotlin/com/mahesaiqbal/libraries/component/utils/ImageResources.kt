@@ -1,4 +1,4 @@
-package com.mahesaiqbal.libraries.component
+package com.mahesaiqbal.libraries.component.utils
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
