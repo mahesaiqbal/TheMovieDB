@@ -23,7 +23,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.DateRange
-import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.ThumbUp
@@ -38,7 +37,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -47,18 +45,16 @@ import com.mahesaiqbal.apis.movie.LocalMovieRepository
 import com.mahesaiqbal.apis.movie.model.movie.Movie
 import com.mahesaiqbal.features.moviedetail.state.MovieDetailIntent
 import com.mahesaiqbal.features.moviedetail.viewmodel.MovieDetailViewModel
-import com.mahesaiqbal.libraries.component.AppTopBar
-import com.mahesaiqbal.libraries.component.FailureScreen
-import com.mahesaiqbal.libraries.component.LoadingScreen
 import com.mahesaiqbal.libraries.component.LocalImageResource
+import com.mahesaiqbal.libraries.component.screen.general.FailureScreen
+import com.mahesaiqbal.libraries.component.screen.general.LoadingScreen
+import com.mahesaiqbal.libraries.component.utils.DateFormatHelper
 import com.mahesaiqbal.libraries.core.state.Async
 import com.mahesaiqbal.libraries.core.viewmodel.rememberViewModel
 import com.seiko.imageloader.rememberImagePainter
-import org.jetbrains.compose.resources.painterResource
 
 @Composable
 fun MovieDetailScreen(
-    modifier: Modifier = Modifier,
     movieId: Int,
     onBackClick: () -> Unit = {}
 ) {
@@ -78,12 +74,6 @@ fun MovieDetailScreen(
     }
 
     Scaffold(
-//        topBar = {
-//            AppTopBar(
-//                title = "",
-//                actionBack = onBackClick
-//            )
-//        },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -109,10 +99,6 @@ fun MovieDetailScreen(
                 movieData?.let { data ->
                     MovieDetailScreenContent(
                         movie = data,
-//                        imageFavorite = imageFavoriteResource,
-//                        onToggleFavorite = {
-//                            viewModel.sendIntent(MovieDetailIntent.ToggleFavorite(data))
-//                        },
                         onBackClick = onBackClick
                     )
                 }
@@ -130,11 +116,11 @@ fun MovieDetailScreen(
 fun MovieDetailScreenContent(
     modifier: Modifier = Modifier,
     movie: Movie,
-//    imageFavorite: Painter,
-//    onToggleFavorite: () -> Unit,
     onBackClick: () -> Unit
 ) {
-    val posterPainter = rememberImagePainter(url = "https://image.tmdb.org/t/p/original${movie.id}")
+    val posterPainter = rememberImagePainter(
+        url = "https://image.tmdb.org/t/p/original${movie.posterPath}"
+    )
 
     Column(
         modifier = modifier
@@ -241,7 +227,7 @@ fun MovieDetailScreenContent(
                     tint = Color.LightGray
                 )
                 Text(
-                    text = movie.releaseDate,
+                    text = DateFormatHelper.getFormattedDate(movie.releaseDate),
                     style = MaterialTheme.typography.h6.copy(
                         fontWeight = FontWeight.Bold
                     ),

@@ -1,4 +1,4 @@
-package com.mahesaiqbal.libraries.component
+package com.mahesaiqbal.libraries.component.screen.general
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

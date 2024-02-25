@@ -47,11 +47,11 @@ class MovieRepository(
         return favoriteDataSources.getIsFavoriteMovie(movieId)
     }
 
-    suspend fun insertFavoriteMovie(movie: Movie) {
+    suspend fun insertFavorite(movie: Movie) {
         favoriteDataSources.insertMovie(movie)
     }
 
-    suspend fun deleteFavoriteMovie(movieId: Int) {
+    suspend fun deleteFavorite(movieId: Int) {
         favoriteDataSources.removeMovie(movieId)
     }
 }

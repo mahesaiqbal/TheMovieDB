@@ -49,10 +49,10 @@ class MovieDetailViewModel(
     }
 
     private fun toggleFavorite(movie: Movie) = viewModelScope.launch {
-//        if (uiState.value.isFavorite) {
-//            repository.deleteFavorite(movie.id)
-//        } else {
-//            repository.insertFavorite(movie)
-//        }
+        if (uiState.value.isFavorite) {
+            repository.deleteFavorite(movie.id)
+        } else {
+            repository.insertFavorite(movie)
+        }
     }
 }

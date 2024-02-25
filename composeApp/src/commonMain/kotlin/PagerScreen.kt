@@ -101,7 +101,7 @@ fun PagerScreen(
                 }
                 1 -> {
                     FavoriteScreen(
-                        onMovieClick = {}
+                        onMovieClick = { navigator.navigate("/detail/${it.id}") }
                     )
                 }
             }
