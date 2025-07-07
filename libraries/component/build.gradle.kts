@@ -48,7 +48,7 @@ kotlin {
 
 android {
     namespace = "com.mahesaiqbal.libraries.component"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }

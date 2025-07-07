@@ -1,5 +1,6 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 import org.jetbrains.compose.ExperimentalComposeLibrary
+import java.util.Properties
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -92,9 +93,13 @@ android {
 buildkonfig {
     packageName = "com.mahesaiqbal.app"
 
+    val keystoreFile = project.rootProject.file("local.properties")
+    val properties = Properties()
+    properties.load(keystoreFile.inputStream())
+
     defaultConfigs {
-        buildConfigField(STRING, "BASE_URL", "https://api.themoviedb.org/3/")
-        buildConfigField(STRING, "APP_NAME", "TheMovieDB")
-        buildConfigField(STRING, "API_KEY", "49a79f125a171a70aafeaefdc6f406b8")
+        buildConfigField(STRING, "BASE_URL", properties.getProperty("TMDB_BASE_URL"))
+        buildConfigField(STRING, "APP_NAME", properties.getProperty("TMDB_APP_NAME"))
+        buildConfigField(STRING, "API_KEY", properties.getProperty("TMDB_API_KEY"))
     }
 }

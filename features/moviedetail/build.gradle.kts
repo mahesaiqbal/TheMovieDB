@@ -53,7 +53,7 @@ kotlin {
 
 android {
     namespace = "com.mahesaiqbal.features.moviedetail"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }

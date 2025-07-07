@@ -45,7 +45,7 @@ kotlin {
 
 android {
     namespace = "com.mahesaiqbal.features.favorite"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }
